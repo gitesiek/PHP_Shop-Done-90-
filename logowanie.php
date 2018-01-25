@@ -17,12 +17,12 @@
         </form>
     </div>
 <?php
-    session_start();
-     $connection=mysqli_connect('localhost','root','','uzytkownicy');
+        session_start();
+        $connection=mysqli_connect('localhost','root','','uzytkownicy');
 
-    if($connection)
-    { 
-        $no=false;
+        if($connection)
+        { 
+            $no=false;
             if(!empty($_POST['Login'])){
                 $login=$_POST['Login'];
                 $check="SELECT ID, Login, Password FROM users WHERE Login LIKE '%" . $login . "%'";    
@@ -35,7 +35,6 @@
                 echo "Podaj login lub email <br>";
                 $no=true;
             }
-            
             if(!empty($_POST['Password']))
                 $password=$_POST['Password'];
             else {
@@ -43,20 +42,18 @@
                 $no=true;
             }
             if(!$no){
-                
-            $result=mysqli_query($connection, $check);
-            $hashed=mysqli_fetch_array($result);
-        
+                $result=mysqli_query($connection, $check);
+                $hashed=mysqli_fetch_array($result);
             if(password_verify($password,$hashed['Password'])){
-            $_SESSION['User_Login']=$hashed['Login'];
-            $_SESSION['User_ID']=$hashed['ID'];
-            header('Location: home.php');
+                $_SESSION['User_Login']=$hashed['Login'];
+                $_SESSION['User_ID']=$hashed['ID'];
+                header('Location: home.php');
             }
             else echo "Podaj prawidłowe hasło";
             }
-        mysqli_close($connection);
-    }
-    
+                mysqli_close($connection);
+        }
+
 ?>
     
     
