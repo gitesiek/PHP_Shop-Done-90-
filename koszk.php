@@ -48,10 +48,10 @@
         <div id="left">
             <center>Menu</center>
             <?php 
-            session_start();
-            if(empty($_SESSION['User_Login'])){
-            echo '<a href="logowanie.php"> Logowanie</a> <br>';
-            echo '<a href="rejestracja.php"> Rejestracja</a><br>';
+                session_start();
+                if(empty($_SESSION['User_Login'])){
+                    echo '<a href="logowanie.php"> Logowanie</a> <br>';
+                    echo '<a href="rejestracja.php"> Rejestracja</a><br>';
             }
             ?>
             
@@ -60,28 +60,28 @@
 
         <div id="mid">
             <?php
-            $CartID=$_GET['id'];
-             $connection=mysqli_connect('localhost','root','','uzytkownicy');
-            $connection2=mysqli_connect('localhost','root','','przedmioty');
-            $cartItems="SELECT ProductID,Quanity FROM `cartspositions` WHERE CartID LIKE '%" . $CartID . "%';";
-            
-            //$itemInfo="SELECT Name, Price FROM items WHERE ID LIKE '%" . $row['ProductID'] . "%';";
-            
-            $sum=0;
-            
-            $cartAcces="SELECT ClientID FROM carts WHERE ID LIKE '%" . $CartID . "%';";
-            
-            $result=mysqli_query($connection,$cartItems);
-            echo"<table border=2px>";
-            echo"<th>Nazwa</th><th>Ilość</th><th>Cena</th>";
-            while($row=mysqli_fetch_array($result)){
-                $results2=mysqli_query($connection2,"SELECT Name, Price FROM items WHERE ID LIKE '%" . $row['ProductID'] . "%';");
-                $row2=mysqli_fetch_array($results2);
-                echo "<tr><td>".$row2['Name']."</td><td>".$row['Quanity']."</td><td>".$row2['Price']*$row['Quanity']."</td></tr>";
-                $sum+=$row2['Price']*$row['Quanity'];
-            }
-            echo "<tr> <td>Suma: </td><td colspan='2'> $sum </td></tr>";
-            echo"</table>";
+                $CartID=$_GET['id'];
+                $connection=mysqli_connect('localhost','root','','uzytkownicy');
+                $connection2=mysqli_connect('localhost','root','','przedmioty');
+                $cartItems="SELECT ProductID,Quanity FROM `cartspositions` WHERE CartID LIKE '%" . $CartID . "%';";
+
+                //$itemInfo="SELECT Name, Price FROM items WHERE ID LIKE '%" . $row['ProductID'] . "%';";
+
+                $sum=0;
+
+                $cartAcces="SELECT ClientID FROM carts WHERE ID LIKE '%" . $CartID . "%';";
+
+                $result=mysqli_query($connection,$cartItems);
+                echo"<table border=2px>";
+                echo"<th>Nazwa</th><th>Ilość</th><th>Cena</th>";
+                while($row=mysqli_fetch_array($result)){
+                    $results2=mysqli_query($connection2,"SELECT Name, Price FROM items WHERE ID LIKE '%" . $row['ProductID'] . "%';");
+                    $row2=mysqli_fetch_array($results2);
+                    echo "<tr><td>".$row2['Name']."</td><td>".$row['Quanity']."</td><td>".$row2['Price']*$row['Quanity']."</td></tr>";
+                    $sum+=$row2['Price']*$row['Quanity'];
+                }
+                echo "<tr> <td>Suma: </td><td colspan='2'> $sum </td></tr>";
+                echo"</table>";
             ?>
             
             
