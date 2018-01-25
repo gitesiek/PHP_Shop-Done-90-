@@ -4,10 +4,10 @@
 <head>
 <title>Koszyk 
     <?php
-    session_start();
-    if(!empty($_SESSION['User_Login']))
-        echo $_SESSION['User_Login'];
-    else header('Location: home.php');
+        session_start();
+        if(!empty($_SESSION['User_Login']))
+            echo $_SESSION['User_Login'];
+        else header('Location: home.php');
     ?>
     
 </title>
@@ -54,10 +54,10 @@
     <div id="left">
         <center>Menu</center>
         <?php             
-        if(empty($_SESSION['User_Login'])){
-            echo '<a href="logowanie.php"> Logowanie</a> <br>';          
-            echo '<a href="rejestracja.php"> Rejestracja</a><br>';
-         }
+            if(empty($_SESSION['User_Login'])){
+                echo '<a href="logowanie.php"> Logowanie</a> <br>';          
+                echo '<a href="rejestracja.php"> Rejestracja</a><br>';
+             }
          ?>
          <a href="https://facebook.com"> Facebook</a>
     </div>
