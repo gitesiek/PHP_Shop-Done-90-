@@ -48,11 +48,11 @@
         <div id="left">
             <center>Menu</center>
             <?php 
-            session_start();
-            if(empty($_SESSION['User_Login'])){
-            echo '<a href="logowanie.php"> Logowanie</a> <br>';
-            echo '<a href="rejestracja.php"> Rejestracja</a><br>';
-            }
+                session_start();
+                if(empty($_SESSION['User_Login'])){
+                echo '<a href="logowanie.php"> Logowanie</a> <br>';
+                echo '<a href="rejestracja.php"> Rejestracja</a><br>';
+                }
             ?>
             
             <a href="przedmioty.php"> Sklep</a>
