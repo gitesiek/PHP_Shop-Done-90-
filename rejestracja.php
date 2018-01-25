@@ -54,7 +54,6 @@
             
             $insertNew="INSERT INTO `users`(`ID`, `Login`, `Password`, `Mail`, `AccesLevel`) VALUES (NULL,'$login','$hashed','$email', 0);";
 
-            
             $checkIfNew="SELECT ID, Login, Password, Mail, AccesLevel FROM users WHERE  Login LIKE '%" . $login . "%' OR Mail Like '%" . $email ."%';"; 
             
             $result=mysqli_query($connection, $checkIfNew); 
