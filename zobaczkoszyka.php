@@ -48,11 +48,11 @@
         <div id="left">
             <center>Menu</center>
             <?php 
-            session_start();
-            if(empty($_SESSION['User_Login'])){
-            echo '<a href="logowanie.php"> Logowanie</a> <br>';
-            echo '<a href="rejestracja.php"> Rejestracja</a><br>';
-            }
+                session_start();
+                if(empty($_SESSION['User_Login'])){
+                    echo '<a href="logowanie.php"> Logowanie</a> <br>';
+                    echo '<a href="rejestracja.php"> Rejestracja</a><br>';
+                }
             ?>
             
             <a href="przedmioty.php"> Sklep</a>
@@ -63,11 +63,10 @@
                 $connection=mysqli_connect('localhost','root','','uzytkownicy');
                 $car="SELECT ID, Date FROM `carts` WHERE ClientID LIKE '%" . $_SESSION['User_ID'] . "%';";
                 $result=mysqli_query($connection,$car);
-                mysqli_error($connection);
                 echo "<table border=2px cellspacing=5px cellpadding=5px>";
                 echo "<th>ID koszyka</th><th>Data</th>";
                 while($row=mysqli_fetch_array($result)){
-                echo "<tr><td><a href=koszk.php?id=".$row['ID'].">".$row['ID']."</a></td><td>".$row['Date']."</td></tr>";
+                    echo "<tr><td><a href=koszk.php?id=".$row['ID'].">".$row['ID']."</a></td><td>".$row['Date']."</td></tr>";
                 }
                 echo "</table>";
             ?>
